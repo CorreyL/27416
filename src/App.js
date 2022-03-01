@@ -13,6 +13,7 @@ const App = () => {
     WebViewer(
       {
         path: '/webviewer/lib',
+        fullAPI: true,
         initialDoc: '/files/docusign-sample.pdf',
       },
       viewer.current,
