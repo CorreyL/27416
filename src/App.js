@@ -15,6 +15,13 @@ const App = () => {
         path: '/webviewer/lib',
         fullAPI: true,
         initialDoc: '/files/docusign-sample.pdf',
+        /**
+         * @note A valid license key with Create Digital Signature permission
+         * from PDFTron is required in order for this to work, because the
+         * trial will create a watermark on the document, which is considered a
+         * modification, thus invalidating the original Digital Signature
+         */
+        // licenseKey: '',
       },
       viewer.current,
     ).then((instance) => {
