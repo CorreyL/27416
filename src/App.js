@@ -22,10 +22,20 @@ const App = () => {
     });
   }, []);
 
+  const digitallySignPdf = async () => {
+    // stub
+    console.log('Hello World');
+  };
+
   return (
     <div className="App">
       <div className="header">
-        <button className="digital-signature-btn">Digitally Sign Document With Existing Digital Signature</button>
+        <button
+          className="digital-signature-btn"
+          onClick={digitallySignPdf}
+        >
+          Digitally Sign Document With Existing Digital Signature
+        </button>
       </div>
       <div className="webviewer" ref={viewer}></div>
     </div>
