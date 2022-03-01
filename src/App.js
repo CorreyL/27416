@@ -1,10 +1,12 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { saveAs } from 'file-saver';
 import WebViewer from '@pdftron/webviewer';
 import './App.css';
 
 const App = () => {
   const viewer = useRef(null);
+  const [docReadyToSign, setDocReadyToSign] = useState(false);
+  const [instance, setInstance] = useState();
 
   // if using a class, equivalent of componentDidMount 
   useEffect(() => {
@@ -15,10 +17,14 @@ const App = () => {
       },
       viewer.current,
     ).then((instance) => {
-      const { documentViewer, annotationManager, Annotations } = instance.Core;
+      setInstance(instance);
+
+      const {
+        documentViewer,
+      } = instance.Core;
 
       documentViewer.addEventListener('documentLoaded', () => {
-
+        setDocReadyToSign(true);
       });
     });
   }, []);
@@ -34,6 +40,7 @@ const App = () => {
         <button
           className="digital-signature-btn"
           onClick={digitallySignPdf}
+          disabled={!docReadyToSign}
         >
           Digitally Sign Document With Existing Digital Signature
         </button>
