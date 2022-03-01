@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { saveAs } from 'file-saver';
 import WebViewer from '@pdftron/webviewer';
 import './App.css';
 
